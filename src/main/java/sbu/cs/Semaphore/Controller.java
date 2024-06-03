@@ -1,6 +1,10 @@
 package sbu.cs.Semaphore;
 
+import java.util.concurrent.Semaphore;
+
 public class Controller {
+
+    public static final Semaphore sem = new Semaphore(2);
 
     /**
      * A number of operators are trying to access a resource in parallel to each other.
@@ -18,7 +22,7 @@ public class Controller {
      * Note that every time a thread accesses the resource, you must print its Name and the System Time.
      */
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Operator operator1 = new Operator("operator1");
         Operator operator2 = new Operator("operator2");
         Operator operator3 = new Operator("operator3");
@@ -36,6 +40,12 @@ public class Controller {
             Use a Semaphore to solve the synchronization problem.
             Every time a thread accesses the resource, print its Name and the current System Time.
          */
+
+        operator1.join();
+        operator2.join();
+        operator3.join();
+        operator4.join();
+        operator5.join();
 
     }
 }
